@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IK Business Hub</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial,sans-serif;background:#f4f7fb;color:#172033}
+header{background:#073b70;color:white;padding:20px 5%}
+.logo{font-size:27px;font-weight:bold}
+.logo span{color:#ffbd45}
+nav{margin-top:16px;display:flex;gap:18px;flex-wrap:wrap}
+nav a{color:white;text-decoration:none}
+.hero{background:linear-gradient(120deg,#0754a0,#087eaa);color:white;padding:45px 5%;text-align:center}
+.hero h1{font-size:32px;margin:0 0 12px}
+.hero p{line-height:1.6}
+.search{display:flex;max-width:650px;margin:24px auto 0}
+.search input{flex:1;min-width:0;padding:14px;border:0;border-radius:7px 0 0 7px;font-size:16px}
+button{cursor:pointer;border:0;border-radius:6px;padding:12px 16px;background:#ffbd45;color:#172033;font-weight:bold}
+.search button{border-radius:0 7px 7px 0}
+.container{padding:28px 5%;max-width:1200px;margin:auto}
+h2{margin-bottom:18px}
+.categories,.products{display:grid;grid-template-columns:repeat(auto-fit,minmax(145px,1fr));gap:14px}
+.category,.card,.panel{background:white;padding:18px;border-radius:12px;box-shadow:0 3px 12px #0000000b}
+.category{text-align:center;cursor:pointer}
+.category div{font-size:30px;margin-bottom:10px}
+.products{grid-template-columns:repeat(auto-fit,minmax(220px,1fr))}
+.card{padding:0;overflow:hidden}
+.product-icon{background:#e6f2ff;text-align:center;padding:28px;font-size:48px}
+.card-content{padding:16px}
+.price{color:#087b48;font-size:20px;font-weight:bold}
+.muted{color:#68758a;font-size:14px}
+.card button{width:100%;margin-top:12px;background:#0754a0;color:white}
+.panel{margin-top:25px}
+input,select,textarea{font:inherit}
+.form-grid{display:grid;gap:12px}
+.form-grid input,.form-grid select,.form-grid textarea{width:100%;padding:12px;border:1px solid #ccd5e1;border-radius:6px}
+.form-grid button{background:#087b48;color:white}
+footer{background:#073b70;color:white;text-align:center;padding:25px;margin-top:30px}
+@media(max-width:480px){.hero h1{font-size:26px}.search input{width:60%}.container{padding:22px 4%}}
+</style>
+</head>
+<body>
+<header>
+  <div class="logo">IK <span>Business Hub</span></div>
+  <nav>
+    <a href="#home">होम</a>
+    <a href="#categories">कैटेगरी</a>
+    <a href="#products">प्रोडक्ट</a>
+    <a href="#supplier">सप्लायर बनें</a>
+  </nav>
+</header>
+
+<section class="hero" id="home">
+  <h1>भारत का स्मार्ट बिज़नेस मार्केटप्लेस</h1>
+  <p>प्रोडक्ट खोजें, सप्लायर खोजें और अपना बिज़नेस बढ़ाएँ।</p>
+  <div class="search">
+    <input id="searchInput" placeholder="प्रोडक्ट या सप्लायर खोजें...">
+    <button onclick="searchProducts()">खोजें</button>
+  </div>
+</section>
+
+<main class="container">
+<section id="categories">
+  <h2>🏷️ लोकप्रिय कैटेगरी</h2>
+  <div class="categories">
+    <div class="category" onclick="chooseCategory('कपड़े')"><div>👕</div>कपड़े</div>
+    <div class="category" onclick="chooseCategory('इलेक्ट्रॉनिक्स')"><div>📱</div>इलेक्ट्रॉनिक्स</div>
+    <div class="category" onclick="chooseCategory('मशीनरी')"><div>⚙️</div>मशीनरी</div>
+    <div class="category" onclick="chooseCategory('कृषि')"><div>🌾</div>कृषि उत्पाद</div>
+    <div class="category" onclick="chooseCategory('फर्नीचर')"><div>🪑</div>फर्नीचर</div>
+    <div class="category" onclick="chooseCategory('खाद्य')"><div>📦</div>खाद्य उत्पाद</div>
+  </div>
+</section>
+
+<section id="products" style="margin-top:35px">
+  <h2>🛍️ बिज़नेस प्रोडक्ट</h2>
+  <p class="muted">ये डेमो प्रोडक्ट हैं। कीमतें उदाहरण के लिए दी गई हैं।</p>
+  <div class="products" id="productList"></div>
+</section>
+
+<section class="panel" id="supplier">
+  <h2>🏪 अपना बिज़नेस जोड़ें</h2>
+  <p class="muted">अपने बिज़नेस और प्रोडक्ट की जानकारी भरें।</p>
+  <form class="form-grid" id="supplierForm">
+    <input id="businessName" placeholder="बिज़नेस / दुकान का नाम" required>
+    <input id="ownerName" placeholder="संपर्क व्यक्ति का नाम" required>
+    <input id="productName" placeholder="प्रोडक्ट का नाम" required>
+    <select
